@@ -83,3 +83,7 @@ ExampleStructs.Person.new("jobs1", 23, :male) |> IO.inspect
 ExampleStructs.Person.new("jobs2", nil, nil) |> IO.inspect
 ExampleStructs.Person.new("jobs3", nil, :male) |> IO.inspect
 ExampleStructs.Person.new(nil, nil, nil) |> IO.inspect
+
+defmodule Test2 do
+  defstruct name: "steve", age: 0
+end

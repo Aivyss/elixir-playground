@@ -1,0 +1,14 @@
+# editors
+.vscode
+*.iml
+.idea
+
+# environments
+mise.toml
+
+# build files
+*/_build
+
+# others
+.DS_store
+
