@@ -46,3 +46,22 @@ end
 # spawn_link(ConcurrencyExample2, :explode, []) |> IO.inspect # プロセスの終了を受信することができる
 
 ConcurrencyExample2.run()
+
+IO.puts "===process monitoring==="
+defmodule ConcurrencyExample3 do
+  def explode, do: exit(:kaboooom)
+
+  @doc """
+  非同期プロセスと連携したくはないが、そこからの情報は受け取りたい場合spawn_monitorを使う
+  """
+  def run do
+    spawn_monitor(ConcurrencyExample3, :explode, [])
+
+    receive do
+      {:DOWN, ref, :process, from_pid, reason} ->
+        IO.puts "process #{inspect from_pid} exited with reason #{inspect reason}, ref=#{inspect ref}"
+    end
+  end
+end
+
+ConcurrencyExample3.run
